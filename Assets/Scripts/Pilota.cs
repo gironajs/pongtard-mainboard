@@ -9,6 +9,7 @@ public class Pilota : MonoBehaviour
     public float hSpeed = 10f;
     public float vSpeed = 0f;
 
+    public Points points;
 
     // Use this for initialization
     void Awake()
@@ -16,11 +17,6 @@ public class Pilota : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         initPos = transform.position;
         rb.AddForce(new Vector3(hSpeed * 1.1f, vSpeed, 0f), ForceMode.Impulse);
-    }
-
-    private void Start()
-    {
-
     }
 
     // Update is called once per frame
@@ -32,8 +28,6 @@ public class Pilota : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        
-
         if(col.transform.name.Contains("Paret"))
         {
             vSpeed = vSpeed * -1;
@@ -56,6 +50,11 @@ public class Pilota : MonoBehaviour
 
     private void OnBecameInvisible()
     {
+        if (transform.position.x > 0)
+            points.Player1up();
+        else
+            points.Player2up();
+
         transform.position = initPos;
     }
 }

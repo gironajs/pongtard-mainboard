@@ -59,7 +59,7 @@ public class Manager : MonoBehaviour
 
     private void MoveDown(SocketIOEvent ev)
     {
-        Debug.Log(ev);
+        //Debug.Log(ev);
         JSONObject json = ev.data;
 
         if (json["id"].n == 0)
@@ -70,6 +70,7 @@ public class Manager : MonoBehaviour
 
     private void StopMove(SocketIOEvent ev)
     {
+        //Debug.Log(ev);
         JSONObject json = ev.data;
 
         if (json["id"].n == 0)
